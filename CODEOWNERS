@@ -1,2 +1,39 @@
-# Default reviewers/owners for fork
-* @MSSecCSA
+# Default reviewers/owners for fork. Last matching pattern wins.
+# Lanes are defined in AGENTS.md. Replace @MSSecCSA with the lane's bot/team
+# handle (e.g. @MSSecCSA/server-agents) once those exist; owners must be valid
+# GitHub users/teams with write access or the rule is ignored.
+*                               @MSSecCSA
+
+# Escalation (see AGENTS.md): bot -> advisor (Copilot) -> @MSSecCSA tiebreaker.
+# CODEOWNERS cannot name Copilot as a reviewer, so advisor input happens via
+# the needs-advisor label/comments; @MSSecCSA remains the required approver.
+# docs lane
+*.md                            @MSSecCSA
+/docs/                          @MSSecCSA
+# Governance files: human-owned, never advisor-resolved
+/CODEOWNERS                     @MSSecCSA
+
+# server lane
+/McpServerGraphAPI/             @MSSecCSA
+# mcp-spec lane
+/McpServerGraphAPI/Transport/   @MSSecCSA
+# graph-api lane
+/McpServerGraphAPI/Packs/       @MSSecCSA
+# identity lane
+/McpServerGraphAPI/Auth/        @MSSecCSA
+# observability lane
+/McpServerGraphAPI/Telemetry/   @MSSecCSA
+
+# quality lane
+/tests/                         @MSSecCSA
+/evals/                         @MSSecCSA
+
+# client lane
+/McpClient/                     @MSSecCSA
+
+# release lane
+/.github/                       @MSSecCSA
+/Dockerfile                     @MSSecCSA
+
+# deps lane
+*.csproj                        @MSSecCSA
